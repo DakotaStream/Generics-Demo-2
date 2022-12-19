@@ -4,7 +4,6 @@ using static System.Net.WebRequestMethods;
 
 using System;
 using System.Collections.Generic;
-//using ConsoleUI.WithoutGenerics;
 namespace ConsoleUI
 {
     class Program
