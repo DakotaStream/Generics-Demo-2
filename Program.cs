@@ -1,6 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-//https://www.youtube.com/watch?v=l6s7AvZx5j8&t=1904s
-//using ConsoleUI.Models;
+// https://www.youtube.com/watch?v=l6s7AvZx5j8&t=1904s
 using static System.Net.WebRequestMethods;
 
 using System;

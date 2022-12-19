@@ -9,25 +9,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 /**  Visual Studio Notes
- * CTRL . Segestions
+ * CTRL . or Alt Enter Segestions
+ *    Move a class into its own file.
+ *    Remove Usings that are not referenced 
  * F12 If on a Class.Something it will take you there.
+ *   CTRL click also.
  * CTRL F12 Takes you to the implementation of the interface.
+ * CTRL T or CTRL comma: better search
+ * CTRL K CTRL D Format doc
  * 
  * Options > Text Editor > Code Cleanup
  * 
+ * Code View> Other Windows> C# Interactive:snippit playground
  * 
+ * Alt Down Arrow: Move a line of code.
  * 
+ * CTRL Shift Space: Parameters
+ * 
+ * CTRL J Pick a different method from class.
+ *
+ * 
+ * Shift Alt: up and down, click a drag. Change multiple line
  */
 
-namespace ConsoleUI 
+namespace ConsoleUI
 {
     internal class GenericTextFileProcessor//  <S>  You can do it at class level.
     {
-                                                                                 // Limitations/ constraint
-                                                                                 // Must be class
+        // Limitations/ constraint
+        // Must be class
         // 2 Must have an empty constructor new().  Not required, but helps you dial in what type of object is put in T0
         //public static List<T, U> LoadFromTextFile<T> (string filePath) where T : class, new() where U : class
-        public static List<T> LoadFromTextFile<T> (string filePath) where T : class, new()
+        public static List<T> LoadFromTextFile<T>(string filePath) where T : class, new()
         {
             var lines = System.IO.File.ReadAllLines(filePath).ToList();
             List<T> output = new List<T>();
@@ -38,13 +51,13 @@ namespace ConsoleUI
             {
                 throw new IndexOutOfRangeException("The file was either empty or missing.");
             }
-            
+
             // Splits the header into one column header per entry
             var headers = lines[0].Split(',');
 
             // Removes the header row from the lines so we don't
             // have to worry about skipping over that first row.
-            lines .RemoveAt(0);
+            lines.RemoveAt(0);
 
             foreach (var row in lines)
             {
@@ -65,7 +78,7 @@ namespace ConsoleUI
                 {
                     foreach (var col in cols)
                     {
-                        
+
                         if (col.Name == headers[i])
                         {
                             col.SetValue(entry, Convert.ChangeType(vals[i], col.PropertyType));
@@ -85,7 +98,7 @@ namespace ConsoleUI
             if (data == null || data.Count == 0)
             {
                 throw new ArgumentNullException("data", "You must populate the data parameter with at least o");
-                
+
             }
             var cols = data[0].GetType().GetProperties();
             // Loops through each column and gets the name so it can comma
